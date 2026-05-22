@@ -530,12 +530,40 @@ section { width: 100%; }
 /* ===========================
    PROMISE / YAKUSOKU
 =========================== */
-.trust-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
-@media (min-width: 768px) { .trust-cards { flex-direction: row; gap: 20px; } }
-.trust-card { flex: 1; background: var(--beige); border-radius: 16px; padding: 28px 20px; text-align: center; }
-.trust-icon { color: var(--terracotta); margin-bottom: 12px; display: flex; justify-content: center; align-items: center; }
-.trust-num { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 32px; font-weight: 700; color: var(--terracotta); line-height: 1.2; margin-bottom: 4px; }
-.trust-label { font-size: 14px; font-weight: 500; color: var(--sub); line-height: 1.5; }
+.trust-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin: 40px auto 48px;
+  max-width: 720px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+@media (min-width: 768px) { .trust-cards { padding: 32px 0; } }
+.trust-card {
+  flex: 1;
+  background: transparent;
+  border-radius: 0;
+  padding: 0 8px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.trust-card:last-child { border-right: none; }
+@media (min-width: 768px) { .trust-card { padding: 0 16px; } }
+.trust-icon { color: var(--terracotta); margin-bottom: 8px; display: flex; justify-content: center; align-items: center; }
+.trust-icon svg { width: 24px; height: 24px; }
+@media (min-width: 768px) { .trust-icon svg { width: 32px; height: 32px; } }
+.trust-num { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 20px; font-weight: 700; color: var(--terracotta); line-height: 1.2; margin-bottom: 6px; letter-spacing: 0.02em; }
+.trust-label { font-size: 11px; font-weight: 500; color: var(--sub); line-height: 1.5; }
+@media (min-width: 768px) {
+  .trust-num { font-size: 26px; }
+  .trust-label { font-size: 13px; }
+}
+@media (min-width: 1024px) {
+  .trust-num { font-size: 28px; }
+  .trust-label { font-size: 14px; }
+}
 .promise-list { list-style: none; display: flex; flex-direction: column; gap: 16px; max-width: 640px; margin: 0 auto 48px; }
 .promise-item { display: flex; align-items: flex-start; gap: 16px; }
 .promise-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--terracotta); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--terracotta); margin-top: 2px; }
@@ -880,14 +908,14 @@ details[open] .q-icon { transform: rotate(45deg); }
             <div class="hero-photo-row">
               <div class="hero-photo-item before">
                 <div class="hero-photo-label"><span class="img-label label-before">BEFORE</span></div>
-                <img src="./images/before.png" alt="施工前イメージ" loading="lazy">
+                <img src="./images/before.jpg" alt="施工前イメージ" loading="lazy">
               </div>
               <div class="hero-photo-arrow" aria-hidden="true">
                 <svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="256" height="256" fill="none"/><polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
               </div>
               <div class="hero-photo-item after">
                 <div class="hero-photo-label"><span class="img-label label-after">AFTER</span></div>
-                <img src="./images/after.png" alt="施工後イメージ" loading="lazy">
+                <img src="./images/after.jpg" alt="施工後イメージ" loading="lazy">
               </div>
             </div>
           </div>
@@ -1031,6 +1059,14 @@ details[open] .q-icon { transform: rotate(45deg); }
       <h2>お片付け日和のお約束</h2>
       <p class="sub">実績よりも、姿勢と誠実さで信頼していただけるよう努めます</p>
     </div>
+    <ol class="promise-list">
+      <li class="promise-item"><span class="promise-num">1</span><span class="promise-text">事前見積もり後、追加料金は一切いただきません</span></li>
+      <li class="promise-item"><span class="promise-num">2</span><span class="promise-text">守秘義務契約済みのスタッフのみが伺います</span></li>
+      <li class="promise-item"><span class="promise-num">3</span><span class="promise-text">損害賠償保険加入で、万一の場合も安心です</span></li>
+      <li class="promise-item"><span class="promise-num">4</span><span class="promise-text">立会い不要・鍵預かりで柔軟に対応します</span></li>
+      <li class="promise-item"><span class="promise-num">5</span><span class="promise-text">思い出の品は別途仕分けて、丁寧にお渡しします</span></li>
+    </ol>
+
     <div class="trust-cards">
       <div class="trust-card">
         <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M216,112V56a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8v56c0,96,88,120,88,120S216,208,216,112Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="88 136 112 160 168 104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
@@ -1039,26 +1075,15 @@ details[open] .q-icon { transform: rotate(45deg); }
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="136" x2="160" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="168" x2="160" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
-        <div class="trust-num num">取得済</div>
-        <div class="trust-label">古物商許可</div>
+        <div class="trust-num num">古物商</div>
+        <div class="trust-label">許可取得済</div>
       </div>
       <div class="trust-card">
-        <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M176,200a24,24,0,0,1-48,0V136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M32,136a8,8,0,0,1-8-8.71,104.37,104.37,0,0,1,207.94,0,8,8,0,0,1-8,8.71Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M88,136c0-72,40-104,40-104s40,32,40,104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
+        <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M40,114V56a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v58c0,84-71.2,111.8-86.4,116.8a8,8,0,0,1-5,0C113.4,225.8,40,198,40,114Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
         <div class="trust-num num">加入済</div>
         <div class="trust-label">損害賠償保険<br>万一の場合も安心</div>
       </div>
     </div>
-
-    <div class="section-heading" style="margin-bottom: 24px;">
-      <h3>5つのお約束</h3>
-    </div>
-    <ol class="promise-list">
-      <li class="promise-item"><span class="promise-num">1</span><span class="promise-text">事前見積もり後、追加料金は一切いただきません</span></li>
-      <li class="promise-item"><span class="promise-num">2</span><span class="promise-text">守秘義務契約済みのスタッフのみが伺います</span></li>
-      <li class="promise-item"><span class="promise-num">3</span><span class="promise-text">損害賠償保険加入で、万一の場合も安心です</span></li>
-      <li class="promise-item"><span class="promise-num">4</span><span class="promise-text">立会い不要・鍵預かりで柔軟に対応します</span></li>
-      <li class="promise-item"><span class="promise-num">5</span><span class="promise-text">思い出の品は別途仕分けて、丁寧にお渡しします</span></li>
-    </ol>
 
     <div class="mt-40">
       <div class="section-heading" style="margin-bottom: 20px;">
@@ -1068,13 +1093,27 @@ details[open] .q-icon { transform: rotate(45deg); }
         <div class="ba-item">
           <div class="ba-img bg-before">
             <div class="ba-label-wrapper"><span class="img-label label-before">BEFORE</span></div>
-            <img src="./images/before.png" alt="施工前イメージ" loading="lazy">
+            <img src="./images/before.jpg" alt="施工前イメージ" loading="lazy">
           </div>
         </div>
         <div class="ba-item">
           <div class="ba-img bg-after">
             <div class="ba-label-wrapper"><span class="img-label label-after">AFTER</span></div>
-            <img src="./images/after.png" alt="施工後イメージ" loading="lazy">
+            <img src="./images/after.jpg" alt="施工後イメージ" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="before-after-grid">
+        <div class="ba-item">
+          <div class="ba-img bg-before">
+            <div class="ba-label-wrapper"><span class="img-label label-before">BEFORE</span></div>
+            <img src="./images/case1-before.jpg" alt="施工前 事例1" loading="lazy">
+          </div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-img bg-after">
+            <div class="ba-label-wrapper"><span class="img-label label-after">AFTER</span></div>
+            <img src="./images/case1-after.jpg" alt="施工後 事例1" loading="lazy">
           </div>
         </div>
       </div>
@@ -1105,8 +1144,8 @@ details[open] .q-icon { transform: rotate(45deg); }
       </div>
       <div class="service-card">
         <div class="service-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M184,80h42.58A8,8,0,0,1,234,85l14,35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="24" y1="144" x2="184" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="192" cy="192" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="80" cy="192" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="168" y1="192" x2="104" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M184,120h64v64a8,8,0,0,1-8,8H216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M56,192H32a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8H184V169.37" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
-        <div class="service-name">引越し前の整理</div>
-        <div class="service-note">残置物の処分まで<br>一括で</div>
+        <div class="service-name">引越し</div>
+        <div class="service-note">引越し時の不用品も<br>まとめて処分</div>
       </div>
       <div class="service-card">
         <div class="service-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M84.27,171.73l-55.09-20.3a7.92,7.92,0,0,1,0-14.86l55.09-20.3,20.3-55.09a7.92,7.92,0,0,1,14.86,0l20.3,55.09,55.09,20.3a7.92,7.92,0,0,1,0,14.86l-55.09,20.3-20.3,55.09a7.92,7.92,0,0,1-14.86,0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="176" y1="16" x2="176" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="224" y1="72" x2="224" y2="104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="152" y1="40" x2="200" y2="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="208" y1="88" x2="240" y2="88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
@@ -1122,6 +1161,16 @@ details[open] .q-icon { transform: rotate(45deg); }
         <div class="service-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M93.17,122.83A71.68,71.68,0,0,1,88,95.91c0-38.58,31.08-70.64,69.64-71.87A72,72,0,0,1,232,98.36C230.73,136.92,198.67,168,160.09,168a71.68,71.68,0,0,1-26.92-5.17h0L120,176H96v24H72v24H40a8,8,0,0,1-8-8V187.31a8,8,0,0,1,2.34-5.65l58.83-58.83Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="180" cy="76" r="12" fill="currentColor"/></svg></div>
         <div class="service-name">実家じまい</div>
         <div class="service-note">解体前の片付け・<br>家財の処分</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
+        <div class="service-name">遺品整理</div>
+        <div class="service-note">大切な品は丁寧に<br>仕分け・保管</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><rect x="40" y="40" width="176" height="176" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="88 128 112 152 168 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
+        <div class="service-name">生前整理</div>
+        <div class="service-note">ご本人と相談しながら<br>整理を進めます</div>
       </div>
     </div>
   </div>
