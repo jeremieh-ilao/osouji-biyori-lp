@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>おそうじ日和｜ご実家の片付け、東京からまるごとお引き受けします</title>
+<title>お片付け日和｜ご実家の片付け、東京からまるごとお引き受けします</title>
 <meta name="description" content="関東在住の方へ。地方のご実家の片付け・不用品回収・ゴミ屋敷清掃を東京から手配。立会い不要・秘密厳守・追加料金なし。まずはLINEで30秒ご相談を。">
 <!-- Icons: Phosphor Icons (MIT License) - https://github.com/phosphor-icons/core -->
 <!-- Japan map: frame-illust.com (commercial use OK, no credit required) - https://frame-illust.com/?p=1944 -->
@@ -209,9 +209,9 @@ section { width: 100%; }
   .br-pc { display: none; }
   .br-sp { display: inline; }
 }
-.hero-inner { display: flex; flex-direction: column; position: relative; z-index: 1; padding: 32px 20px 40px; }
-@media (min-width: 768px)  { .hero-inner { padding: 56px 32px 64px; } }
-@media (min-width: 1024px) { .hero-inner { padding: 48px 32px 56px; } }
+.hero-inner { display: flex; flex-direction: column; position: relative; z-index: 1; padding: 32px 20px 24px; }
+@media (min-width: 768px)  { .hero-inner { padding: 56px 32px 56px; } }
+@media (min-width: 1024px) { .hero-inner { padding: 48px 32px 48px; } }
 
 /* legacy mobile img kept hidden (new HTML uses unified structure) */
 .hero-mobile-img { display: none; }
@@ -222,23 +222,32 @@ section { width: 100%; }
 
 .hero-photo-pc { width: 100%; margin: 0 auto; position: relative; }
 
-/* hero-price-col: stacks price badge + sub vertically */
-.hero-price-col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+/* SP: vertical stack — badge → photo → sub
+   PC: grid 2 columns — left: badge + sub stacked, right: photo */
+.hero-price-row { display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 0 auto 28px; max-width: 1080px; }
+.hero-price-row .hero-price-badge { margin-bottom: 0; }
+.hero-price-row .hero-photo-pc { width: 100%; max-width: 720px; margin: 0 auto; padding: 0; }
+.hero-price-row .hero-sub { text-align: center; margin: 0; max-width: 720px; }
 @media (min-width: 768px) {
-  .hero-price-col { align-items: flex-start; gap: 14px; flex-shrink: 0; text-align: left; }
-  .hero-price-col .hero-sub { text-align: left; margin: 0; max-width: 360px; }
-}
-
-/* Price + photos horizontal row */
-.hero-price-row { display: flex; flex-direction: column; align-items: center; gap: 20px; margin: 0 auto 28px; max-width: 980px; }
-@media (min-width: 768px) {
-  .hero-price-row { flex-direction: row; justify-content: center; align-items: center; gap: 40px; }
-  .hero-price-row .hero-price-badge { margin-bottom: 0; flex-shrink: 0; }
-  .hero-price-row .hero-photo-pc { margin: 0; max-width: 520px; flex: 1; padding: 0; }
+  .hero-price-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    grid-template-areas:
+      "badge photo"
+      "sub   photo";
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 14px;
+    max-width: 1100px;
+  }
+  .hero-price-row .hero-price-badge { grid-area: badge; align-self: end; justify-self: start; }
+  .hero-price-row .hero-sub { grid-area: sub; align-self: start; justify-self: start; text-align: left; max-width: 360px; }
+  .hero-price-row .hero-photo-pc { grid-area: photo; max-width: 720px; flex: 1; }
 }
 @media (min-width: 1024px) {
-  .hero-price-row { gap: 48px; max-width: 1080px; margin-bottom: 20px; }
-  .hero-price-row .hero-photo-pc { max-width: 480px; }
+  .hero-price-row { column-gap: 48px; max-width: 1200px; margin-bottom: 20px; }
+  .hero-price-row .hero-photo-pc { max-width: 800px; }
 }
 .hero-price-row .hero-photo-item { aspect-ratio: 4/3; }
 
@@ -286,17 +295,17 @@ section { width: 100%; }
 /* Main catchcopy — BIG and impactful */
 .hero-catchcopy {
   font-family: "Noto Serif JP", serif;
-  font-size: 30px; font-weight: 700;
-  line-height: 1.4; letter-spacing: 0.04em;
+  font-size: 40px; font-weight: 900;
+  line-height: 1.3; letter-spacing: 0.04em;
   color: var(--body); margin-bottom: 22px;
   text-wrap: pretty;
 }
 .hero-catchcopy .marker {
   background: linear-gradient(transparent 60%, rgba(255,228,138,0.85) 60%);
-  padding: 0 4px;
+  padding: 0 6px;
 }
-@media (min-width: 768px)  { .hero-catchcopy { font-size: 38px; } }
-@media (min-width: 1024px) { .hero-catchcopy { font-size: 42px; line-height: 1.3; margin-bottom: 20px; } }
+@media (min-width: 768px)  { .hero-catchcopy { font-size: 56px; } }
+@media (min-width: 1024px) { .hero-catchcopy { font-size: 64px; margin-bottom: 24px; } }
 
 /* Price line (flat inline) */
 .hero-price-badge {
@@ -333,10 +342,8 @@ section { width: 100%; }
   .hero-price-sub { font-size: 13px; }
 }
 
-.hero-sub { font-size: 14px; color: var(--body); line-height: 1.85; margin-bottom: 22px; max-width: 720px; margin-left: auto; margin-right: auto; text-align: center; }
-@media (min-width: 1024px) { .hero-sub { font-size: 15px; margin-bottom: 26px; } }
-.hero-sub .note { display: block; font-size: 12px; color: var(--sub); margin-top: 6px; }
-@media (min-width: 1024px) { .hero-sub .note { font-size: 13px; } }
+.hero-sub { font-size: 16px; color: var(--body); line-height: 1.85; margin-bottom: 22px; max-width: 720px; margin-left: auto; margin-right: auto; text-align: center; }
+@media (min-width: 1024px) { .hero-sub { font-size: 18px; margin-bottom: 26px; } }
 
 /* CTA stack — horizontal in hero from 480px+ */
 .cta-stack-hero-row { max-width: 760px; }
@@ -356,9 +363,10 @@ section { width: 100%; }
 @media (min-width: 1024px) { #trust-points.section-pad { padding: 28px 0; } }
 .trust-points-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
 }
+@media (min-width: 768px) { .trust-points-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; } }
 @media (min-width: 1024px) { .trust-points-grid { gap: 16px; } }
 .trust-point {
   display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -835,7 +843,7 @@ details[open] .q-icon { transform: rotate(45deg); }
 <!-- HEADER -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="logo">おそうじ日和</a>
+    <a href="#" class="logo">お片付け日和</a>
     <div class="header-right">
       <a href="https://line.me/R/ti/p/@XXXXXXXX" target="_blank" rel="noopener" class="header-line">
         <span class="line-num">
@@ -858,21 +866,15 @@ details[open] .q-icon { transform: rotate(45deg); }
   <div class="container">
     <div class="hero-inner">
       <div class="hero-text">
-        <p class="hero-subcopy-strong">どんなお部屋でも、まずはご相談ください。</p>
+        <p class="hero-subcopy-strong">どんな状態でもご相談ください</p>
         <h1 class="hero-catchcopy serif">
-          ご実家の片付け、<br class="br-pc">東京から<br class="br-sp"><span class="marker">まるごとお引き受け</span>します。
+          お部屋のお片付け
         </h1>
         <div class="hero-price-row">
-          <div class="hero-price-col">
-            <div class="hero-price-badge">
-              <span class="hero-price-label">1R</span>
-              <span class="hero-price-num num">¥30,000<small>〜</small></span>
-              <span class="hero-price-sub">税込・追加料金なし</span>
-            </div>
-            <p class="hero-sub">
-              地方のご実家にも対応。打ち合わせは東京で、作業は現地で。<br>
-              <span class="note">※ご自身のお部屋の片付け・引越し整理にも対応しております。</span>
-            </p>
+          <div class="hero-price-badge">
+            <span class="hero-price-label">1R</span>
+            <span class="hero-price-num num">¥30,000<small>〜</small></span>
+            <span class="hero-price-sub">税込・追加料金なし</span>
           </div>
           <div class="hero-photo-pc">
             <div class="hero-photo-row">
@@ -889,23 +891,10 @@ details[open] .q-icon { transform: rotate(45deg); }
               </div>
             </div>
           </div>
-        </div>
-        <div class="cta-stack cta-stack-hero-row">
-          <a href="https://line.me/R/ti/p/@XXXXXXXX" target="_blank" rel="noopener" class="btn btn-line">
-            <svg width="22" height="22" fill="currentColor" aria-hidden="true"><use href="#i-line"/></svg>
-            <span>LINEで30秒相談（写真OK）</span>
-            <svg width="16" height="16" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-          </a>
-          <a href="tel:0120000000" class="btn btn-phone">
-            <svg width="22" height="22" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M164.39,145.34a8,8,0,0,1,7.59-.69l47.16,21.13a8,8,0,0,1,4.8,8.3A48.33,48.33,0,0,1,176,216,136,136,0,0,1,40,80,48.33,48.33,0,0,1,81.92,32.06a8,8,0,0,1,8.3,4.8l21.13,47.2a8,8,0,0,1-.66,7.53L89.32,117a7.93,7.93,0,0,0-.54,7.81c8.27,16.93,25.77,34.22,42.75,42.41a7.92,7.92,0,0,0,7.83-.59Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-            <span>今すぐ電話</span>
-            <svg width="16" height="16" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-          </a>
-        </div>
-        <div class="cta-trust-note">
-          <span class="cta-trust-item"><strong>ご相談・お見積もり完全無料</strong></span>
-          <span class="cta-trust-divider">／</span>
-          <span class="cta-trust-item"><strong>24時間 LINE 受付</strong></span>
+          <p class="hero-sub">
+            <span class="marker">地方のご実家にも対応。</span><br>
+            打ち合わせは東京で作業は現地で。
+          </p>
         </div>
       </div>
     </div>
@@ -931,8 +920,8 @@ details[open] .q-icon { transform: rotate(45deg); }
           <svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><circle cx="108" cy="100" r="60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M24,200c20.55-24.45,49.56-40,84-40s63.45,15.55,84,40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="200 144 216 160 248 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
         </div>
         <div class="trust-point-text">
-          <div class="trust-point-title">立会い不要OK</div>
-          <div class="trust-point-sub">鍵預かりで遠方からでも完結</div>
+          <div class="trust-point-title">女性スタッフ在籍</div>
+          <div class="trust-point-sub">女性のお客様も安心</div>
         </div>
       </div>
       <div class="trust-point">
@@ -969,12 +958,12 @@ details[open] .q-icon { transform: rotate(45deg); }
     <div class="area-content">
       <div class="area-map-wrap">
         <div class="area-overlay">
-          <h3 class="area-overlay-title">関東圏をメインに、関東近県も対応！</h3>
+          <h3 class="area-overlay-title">首都圏1都7県、出張費無料！</h3>
           <ul class="area-overlay-list">
             <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>東京</li>
-            <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>神奈川</li>
-            <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>千葉</li>
             <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>埼玉</li>
+            <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>千葉</li>
+            <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>神奈川</li>
             <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>茨城</li>
             <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>栃木</li>
             <li><span class="area-check"><svg viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="40 144 96 200 224 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg></span>群馬</li>
@@ -1034,12 +1023,12 @@ details[open] .q-icon { transform: rotate(45deg); }
 </section>
 
 
-<!-- ⑦ おそうじ日和のお約束 -->
+<!-- ⑦ お片付け日和のお約束 -->
 <section class="section-pad bg-white">
   <div class="container">
     <div class="section-heading">
       <span class="eyebrow">お約束</span>
-      <h2>おそうじ日和のお約束</h2>
+      <h2>お片付け日和のお約束</h2>
       <p class="sub">実績よりも、姿勢と誠実さで信頼していただけるよう努めます</p>
     </div>
     <div class="trust-cards">
@@ -1051,7 +1040,7 @@ details[open] .q-icon { transform: rotate(45deg); }
       <div class="trust-card">
         <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M200,224H56a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l56,56V216A8,8,0,0,1,200,224Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="152 32 152 88 208 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="136" x2="160" y2="136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="168" x2="160" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
         <div class="trust-num num">取得済</div>
-        <div class="trust-label">一般廃棄物収集運搬許可<br>古物商許可</div>
+        <div class="trust-label">古物商許可</div>
       </div>
       <div class="trust-card">
         <div class="trust-icon"><svg width="32" height="32" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M176,200a24,24,0,0,1-48,0V136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M32,136a8,8,0,0,1-8-8.71,104.37,104.37,0,0,1,207.94,0,8,8,0,0,1-8,8.71Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M88,136c0-72,40-104,40-104s40,32,40,104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg></div>
@@ -1144,7 +1133,7 @@ details[open] .q-icon { transform: rotate(45deg); }
   <div class="container">
     <div class="section-heading">
       <span class="eyebrow">強み</span>
-      <h2>おそうじ日和を選んでいただく理由</h2>
+      <h2>お片付け日和を選んでいただく理由</h2>
     </div>
     <div class="strengths-grid">
       <div class="strength-card">
@@ -1263,8 +1252,7 @@ details[open] .q-icon { transform: rotate(45deg); }
     <div class="price-area">
       <div class="price-area-title">出張費について</div>
       <ul class="price-area-list">
-        <li>関東圏（東京・神奈川・千葉・埼玉）：<strong>出張費無料</strong></li>
-        <li>関東近県（茨城・栃木・群馬・山梨など）：出張費別途（事前にご提示）</li>
+        <li>首都圏1都7県（東京都を中心に埼玉県・千葉県・神奈川県・茨城県・栃木県・群馬県・山梨県）：<strong>出張費無料</strong></li>
         <li>遠方（東北・北陸・関西・九州など）：物量・内容によりご相談</li>
       </ul>
     </div>
@@ -1437,7 +1425,7 @@ details[open] .q-icon { transform: rotate(45deg); }
         <span>今すぐ電話</span>
         <svg width="16" height="16" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
       </a>
-      <a href="mailto:info@osouji-biyori.jp" class="btn btn-mail">
+      <a href="mailto:info@okatazuke-biyori.com" class="btn btn-mail">
         <svg width="22" height="22" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="224 56 128 144 32 56" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M32,56H224a0,0,0,0,1,0,0V192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V56A0,0,0,0,1,32,56Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="110.55" y1="128" x2="34.47" y2="197.74" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="221.53" y1="197.74" x2="145.45" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
         <span>メールで問合せ</span>
         <svg width="16" height="16" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="256" height="256" fill="none"/><polyline points="96 48 176 128 96 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
@@ -1454,7 +1442,7 @@ details[open] .q-icon { transform: rotate(45deg); }
       <div class="company-col">
         <h3>会社情報</h3>
         <dl>
-          <dt>商号</dt><dd>おそうじ日和（有限会社○○）</dd>
+          <dt>商号</dt><dd>お片付け日和（有限会社○○）</dd>
           <dt>代表者</dt><dd>（代表者名）</dd>
           <dt>住所</dt><dd>東京都○○区○○ X-X-X</dd>
           <dt>電話</dt><dd><a href="tel:0120000000" style="color: rgba(255,255,255,0.85);">0120-000-000</a></dd>
@@ -1464,14 +1452,12 @@ details[open] .q-icon { transform: rotate(45deg); }
       <div class="company-col">
         <h3>許可番号・保険</h3>
         <ul class="permit-list">
-          <li>一般廃棄物収集運搬許可 第○○号（○○市）</li>
-          <li>一般廃棄物収集運搬許可 第○○号（○○市）</li>
           <li>古物商許可 第○○号（○○公安委員会）</li>
           <li>損害賠償保険加入済み</li>
         </ul>
       </div>
     </div>
-    <div class="footer-copy">&copy; 2026 おそうじ日和. All rights reserved.</div>
+    <div class="footer-copy">&copy; 2026 お片付け日和. All rights reserved.</div>
   </div>
 </footer>
 
@@ -1500,7 +1486,7 @@ details[open] .q-icon { transform: rotate(45deg); }
 
 <!-- PC 下部タブ (Hero 過ぎたら表示、ヘッダーと交代) -->
 <nav class="pc-sticky-bar" aria-label="お問い合わせ">
-  <a href="#" class="pc-sticky-logo" aria-label="おそうじ日和トップへ">おそうじ日和</a>
+  <a href="#" class="pc-sticky-logo" aria-label="お片付け日和トップへ">お片付け日和</a>
   <div class="pc-sticky-actions">
   <a href="https://line.me/R/ti/p/@XXXXXXXX" target="_blank" rel="noopener" class="pc-sticky-item pc-sticky-line">
     <span class="ps-main">
